@@ -1,0 +1,217 @@
+body{
+    background: #343a40!important
+}
+
+.vh-100{
+    min-height: 100vh;
+}
+
+.box-login{
+    width: 30%;
+    border-radius: 5px;
+    padding: 1rem;
+    margin: auto;
+    margin-top: 5rem;
+    background: rgba(0, 0, 0, 0.671);
+    padding: 5% 5% 5% 5%;
+}
+
+.bg-image{
+    background-image: url('/dist/images/background.jpg');
+    min-height: 100vh
+}
+
+.bg-color{
+    background: rgba(0, 0, 0, 0.479)
+}
+
+.box-group{
+    width: 10%;
+    height: 8rem;
+    float: left;
+    margin-left: 40px;
+    margin-top: 5rem;
+}
+
+.box-group span{
+    color: white;
+    font-weight: 600
+}
+
+.product-backlog{
+    background: red;
+    min-height: 5rem;
+    width: 8%;
+    margin-right: 1px;
+    float:left
+}
+
+.title-backlog{
+    width: 100%
+}
+
+.button-add{
+    position: fixed;
+    right: 5%;
+    border-radius: 50%;
+}
+
+.bg-black{
+    background: black
+}
+
+.alert-danger{
+    color: white;
+    background-color: #e87c03;
+    border-color: #e87c03
+}
+
+.btn-danger{
+    background: #e50914;
+    border-color: #e50914;
+}
+
+.form-group{
+    line-height: 50%;
+    margin-bottom: 10%
+}
+
+.fit{
+    height: 10rem;
+    background: #23292f;
+    position: absolute;
+    z-index: 1;
+}
+
+.z-index{
+    z-index: 999;
+    margin-top: 3rem
+}
+
+.img-circle{
+    border-radius:50%;
+}
+
+.border-radius{
+    border-radius: 5px;
+}
+
+.groups{
+    height: 500px;
+    overflow: auto;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #232323;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    background: #686767;
+}
+::-webkit-scrollbar-thumb {
+    background: #686767;
+}
+
+.bg-home-groups{
+    background: #17191b;
+}
+
+.media{
+    background: #2b2e31;
+}
+
+.mt-groups{
+    margin-top: 5rem
+}
+
+.button-group{
+    width: 100%;
+    border: 0px;
+    cursor: pointer;
+    padding: 0px;
+    text-align: left;
+}
+
+.media:hover{
+    background: #e50914;
+}
+
+.colum{
+    height: 500px;
+    margin-left: -1.8%;
+    margin-top: 8px;
+    display: none;
+    overflow-y: auto;  
+    overflow-x: hidden;
+}
+
+.colum.show{
+    display: block;
+}
+
+.close{
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: absolute;
+    right: 15px;
+}
+
+.link {
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: #007bff
+  }
+  
+  .link:hover, .link:focus {
+    text-decoration: underline;
+    color: #0056b3;
+  }
+
+  .img-newGroup{
+    width: 12rem;
+    height: 12rem;
+  }
+
+
+@-webkit-keyframes fadeInLeftBig {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(-2000px, 0, 0);
+      transform: translate3d(-2000px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes fadeInLeftBig {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(-2000px, 0, 0);
+      transform: translate3d(-2000px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInLeftBig-s {
+    -webkit-animation-name: fadeInLeftBig;
+    animation-name: fadeInLeftBig;
+  }
+
+  .animated-s {
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+
