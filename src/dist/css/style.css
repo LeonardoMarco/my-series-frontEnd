@@ -25,6 +25,10 @@ body{
     background: rgba(0, 0, 0, 0.479)
 }
 
+.colum-groups{
+    background: #2b2e31;
+}
+
 .box-group{
     width: 10%;
     height: 8rem;
@@ -145,6 +149,15 @@ body{
     overflow-x: hidden;
 }
 
+.colum.colum-2{
+    height: 500px;
+    margin-left: -2.1%;
+    margin-top: 8px;
+    display: none;
+    overflow-y: auto;  
+    overflow-x: hidden;
+}
+
 .colum.show{
     display: block;
 }
@@ -213,5 +226,38 @@ body{
     animation-duration: 0.5s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+  }
+
+  @-webkit-keyframes fadeInRightBig {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(2000px, 0, 0);
+      transform: translate3d(2000px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes fadeInRightBig {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(2000px, 0, 0);
+      transform: translate3d(2000px, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInRightBig-s {
+    -webkit-animation-name: fadeInRightBig;
+    animation-name: fadeInRightBig;
   }
 

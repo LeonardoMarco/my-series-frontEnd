@@ -16,6 +16,11 @@ const apis = {
     //groups
     groups: () => api.get('user/groups'),
     newGroup: (newGroup) => api.post('group/new', newGroup),
+    editGroup: (editGroup) => api.post('group/edit', editGroup),
+    removeGroup: (removeGroup) => api.post('group/remove', removeGroup),
+    //image groups
+    editImage: (editImage) => api.post('group/edit_image', editImage),
+    removeImage: (removeImage) => api.post('group/remove_image', removeImage)
     
 
 }

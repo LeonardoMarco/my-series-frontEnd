@@ -23,6 +23,7 @@ class Group extends Component {
                 // this.setState({ genres });
                 // console.log(res.data)
                 this.setState({groups:res.data})
+                console.log(res.data)
             })
     }
 
@@ -41,17 +42,17 @@ class Group extends Component {
                     </div>
                     <div className="container bg-home-groups z-index border-radius mt-groups">
                         <div className="row">
-                            <div className="col-md-4 p-0">
-                                <div className="w-100 p-2">
+                            <div className="col-md-4 p-0 colum-groups">
+                                <div className="w-100 p-2 bg-color">
                                     <img className="img-fluid img-circle" src="http://sistema.cbdaweb.org.br/cbdaweb/_uploads/fotosAtleta/avatar_generico.jpg?c=1543979030" width="30" alt="img-user"  />
 
                                     <NewGroup />
                                 </div>
                                 <div className="groups">
                                     {this.state.groups.map((groups, i) =>
-                                        <button key={i} className="button-group" onClick={() => this.teste(groups.groupName)}>
+                                        <button key={i} className="button-group" onClick={() => this.teste(groups.id)}>
                                             <div className="media text-light p-3">
-                                                <img src={groups.image} className="mr-3 img-circle" width="50" alt="img-group" />
+                                                {groups.image === '' ? <img src={process.env.REACT_APP_API_URL+'public/uploads/imagesGroup/null.jpeg'} className="mr-3 img-circle" width="50" height="50" alt="img-group"  /> : <img src={process.env.REACT_APP_API_URL+'public/uploads/imagesGroup/'+groups.image} className="mr-3 img-circle" width="50" height="50" alt="img-group"  />}
                                                 <div className="media-body">
                                                     <h6 className="mt-0">{groups.name}</h6>
                                                     {groups.numberMember} membros
@@ -62,7 +63,7 @@ class Group extends Component {
                                 </div>
                             </div>
                             <div className="col-md-8 p-0 text-light">
-                                <IndexGroup teste={this.state.nome} />
+                                <IndexGroup idGroup={this.state.nome} />
                             </div>
                         </div>
                     </div>
