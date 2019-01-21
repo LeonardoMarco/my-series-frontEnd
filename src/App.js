@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Routers from './Routers'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap'
+import '@fortawesome/fontawesome-free/css/all.css'
 import './dist/css/style.css'
 
 

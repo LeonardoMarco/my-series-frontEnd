@@ -261,3 +261,11 @@ body{
     animation-name: fadeInRightBig;
   }
 
+  .dropdown-s a{
+      cursor: pointer;
+  }
+
+  .dropdown-s a:hover{
+    background: #e50914;
+}
+
