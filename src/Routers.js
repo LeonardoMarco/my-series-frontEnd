@@ -6,8 +6,7 @@ import Register from './components/auth/Register';
 import {ResetPassword} from './components/auth/Reset';
 
 import Group from './components/Home';
-import Funcoes from './components/Function';
-import NotFound from './components/NotFound';
+import NotFound from './NotFound';
 
 
 class Routers extends Component {
@@ -25,7 +24,6 @@ class Routers extends Component {
                     <Route path='/register' component={Register} />
                     <Route path='/reset/:token/:email' component={ResetPassword} />
                     <Route path='/home' component={Group} />
-                    <Route path='/backlog' component={Funcoes} />
                     <Route path ='*' component={NotFound} />
                 </Switch>
             </Router>

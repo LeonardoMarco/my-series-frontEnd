@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import Api from './Api'
 // import { Link } from 'react-router-dom'
+import Profile from './profile/Profile'
 import IndexGroup from './groups/IndexGroup'
 import NewGroup from './groups/NewGroup'
-import Profile from './profile/Profile'
+import AddSerie from './series/AddSerie'
+
+
 //http://localhost:3000/public/uploads/imagesGroup/1547142376419-mano.png
 
 class Group extends Component {
     state = {
         groups: [],
         idGroup: '',
-        imageGroup: ''
+        imageGroup: '',
+        nameGroup: '',
+        favoriteGroup: ''
     }
 
     constructor(props) {
@@ -21,17 +26,37 @@ class Group extends Component {
     componentDidMount() {
         Api.groups()
             .then(res => {
-                // const genres = res.data;
-                // this.setState({ genres });
-                // console.log(res.data)
                 this.setState({ groups: res.data })
-                console.log(res.data)
+            })
+            .catch(error => {
+                console.log(error.response.data.error)
             })
     }
 
-    indexGroup(id, image) {
-        this.setState({ idGroup: id, imageGroup: image })
-        // console.log(teste)
+    favorite(i, idGroup) {
+        var favorite = document.getElementById('favorite' + i)
+
+        const id = {
+            id: idGroup
+        }
+
+        Api.favoriteGroup(id)
+            .then(res => {
+
+                if (favorite.classList.contains('active') === false) {
+                    favorite.classList.add('active')
+                } else {
+                    favorite.classList.remove("active")
+                }
+
+            })
+            .catch(error => {
+                console.log(error.response.data.error)
+            })
+    }
+
+    indexGroup(id, image, name, star) {
+        this.setState({ idGroup: id, imageGroup: image, nameGroup: name, favoriteGroup: star })
     }
 
     render() {
@@ -52,11 +77,11 @@ class Group extends Component {
                                 </div>
                                 <div className="groups">
                                     {this.state.groups.map((groups, i) =>
-                                        <button key={i} className="button-group" onClick={() => this.indexGroup(groups.id, groups.image)}>
+                                        <button key={i} className="button-group" onClick={() => this.indexGroup(groups.id, groups.image, groups.name, groups.star)}>
                                             <div className="media text-light p-3">
                                                 {groups.image === '' ? <img src={process.env.REACT_APP_API_URL + 'public/uploads/imagesGroup/null.jpeg'} className="mr-3 img-circle" width="50" height="50" alt="img-group" /> : <img src={process.env.REACT_APP_API_URL + 'public/uploads/imagesGroup/' + groups.image} className="mr-3 img-circle" width="50" height="50" alt="img-group" />}
                                                 <div className="media-body">
-                                                    <h6 className="mt-0">{groups.name}</h6>
+                                                    <h6 className="mt-0">{groups.name}<span>{groups.star === 1 ? <i onClick={() => this.favorite(i, groups.id)} id={'favorite' + i} className="fas fa-star favorite-group p-1 active float-right"></i> : <i onClick={() => this.favorite(i, groups.id)} id={'favorite' + i} className="fas fa-star favorite-group p-1 float-right"></i>}</span></h6>
                                                     {groups.numberMember} membros
                                                 </div>
                                             </div>
@@ -69,10 +94,15 @@ class Group extends Component {
                                     <div>
                                         <center>
                                             <img src="./dist/images/oculos.png" width="300" className="img-fluid mt-5" alt="logo" />
-                                            <h4>Compartilhe as séries com seus amigos <br/> agora mesmo</h4>
+                                            <h4>Compartilhe as séries com seus amigos <br /> agora mesmo</h4>
                                             <p>Crie o seu grupo e adicione os seus amigos para compartilharem comentários das séries que vocês adicionarem</p>
-                                            </center>
-                                    </div> : <div><IndexGroup idGroup={this.state.idGroup} imageGroup={this.state.imageGroup} /></div>}
+                                        </center>
+                                    </div> : 
+                                    <div>
+                                        <IndexGroup favoriteGroup={this.state.favoriteGroup} nameGroup={this.state.nameGroup} idGroup={this.state.idGroup} imageGroup={this.state.imageGroup} />
+                                        <AddSerie />
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>

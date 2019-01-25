@@ -96,6 +96,10 @@ body{
     border-radius:50%;
 }
 
+.img-circle{
+    cursor: pointer
+}
+
 .border-radius{
     border-radius: 5px;
 }
@@ -152,7 +156,7 @@ body{
 .colum.colum-2{
     height: 500px;
     margin-left: -2.1%;
-    margin-top: 8px;
+    margin-top: 2.5rem;
     display: none;
     overflow-y: auto;  
     overflow-x: hidden;
@@ -168,6 +172,7 @@ body{
     cursor: pointer;
     position: absolute;
     right: 15px;
+    z-index: 999;
 }
 
 .link {
@@ -261,11 +266,48 @@ body{
     animation-name: fadeInRightBig;
   }
 
-  .dropdown-s a{
+  .dropdown-s button{
       cursor: pointer;
   }
 
-  .dropdown-s a:hover{
+  .dropdown-s button:hover{
     background: #e50914;
 }
+
+.favorite-group:hover{
+    color: red;
+}
+
+.favorite-group.active{
+    color: red;
+}
+
+.fa-star.active{
+    color: red;
+}
+
+.fa-star{
+    color: #343a40;
+}
+
+.index-group-band{
+    height: 3.5rem;
+}
+
+.ul-member li{
+    list-style: none;
+}
+
+.btn-add{
+    position: absolute;
+    right: 1rem;
+    bottom: 5rem;
+}
+
+.colum.colum-2.add-serie{
+    height: 490px !important;
+    margin-left: 0% !important;
+    margin-top: 0 !important;
+}
+
 

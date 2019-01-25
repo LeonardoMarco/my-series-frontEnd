@@ -5,7 +5,6 @@ class NewGroup extends Component {
 
     state = {
         active: '',
-        membros: 'salve',
         file: 'http://sistema.cbdaweb.org.br/cbdaweb/_uploads/fotosAtleta/avatar_generico.jpg?c=1543979030', sendFile: '',
         error: ''
     }
@@ -17,6 +16,8 @@ class NewGroup extends Component {
     }
 
     addImage(event) {
+        console.log('q porra')
+        
         if (event.target.files[0].type === 'image/png' || event.target.files[0].type === 'image/jpeg') {
             this.setState({
                 file: URL.createObjectURL(event.target.files[0]), sendFile: event.target.files[0]
@@ -37,8 +38,6 @@ class NewGroup extends Component {
 
         Api.newGroup(newGroup)
             .then(res => {
-                // const genres = res.data;
-                // this.setState({ genres });
                 alert('Grupo criado com sucesso')
                 document.location.reload(true)
             })
