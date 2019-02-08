@@ -119,7 +119,7 @@ class Profile extends Component {
     render() {
         return (
             <React.Fragment>
-                {this.state.image === '' ? <img className="img-circle img-profile" src={process.env.REACT_APP_API_URL + 'public/uploads/imagesUser/null.jpg'} width="30" height="30" alt="img-user" onClick={() => this.setState({ active: 'show animated-s fadeInLeftBig-s' })} data-toggle="modal" data-target="#exampleModal" /> : <img className="img-circle img-profile" src={process.env.REACT_APP_API_URL + 'public/uploads/imagesUser/' + this.state.image} width="30" height="30" alt="img-user" onClick={() => this.setState({ active: 'show animated-s fadeInLeftBig-s' })} data-toggle="modal" data-target="#exampleModal" />}
+                {this.state.image === '' ? <img className="img-circle img-profile" src={process.env.REACT_APP_API_URL + 'public/uploads/imagesUser/null.jpg'} width="30" height="30" alt="img-user" onClick={() => this.setState({ active: 'show animated-s fadeInLeftBig-s' })}   /> : <img className="img-circle img-profile" src={process.env.REACT_APP_API_URL + 'public/uploads/imagesUser/' + this.state.image} width="30" height="30" alt="img-user" onClick={() => this.setState({ active: 'show animated-s fadeInLeftBig-s' })}   />}
 
                 <div className={this.state.active + ' w-100 colum bg-danger position-absolute'}>
                     <div className="row">

@@ -5,6 +5,7 @@ import Profile from './profile/Profile'
 import IndexGroup from './groups/IndexGroup'
 import NewGroup from './groups/NewGroup'
 import AddSerie from './series/AddSerie'
+import SeriesGroup from './series/SeriesGroup'
 
 
 //http://localhost:3000/public/uploads/imagesGroup/1547142376419-mano.png
@@ -100,7 +101,8 @@ class Group extends Component {
                                     </div> : 
                                     <div>
                                         <IndexGroup favoriteGroup={this.state.favoriteGroup} nameGroup={this.state.nameGroup} idGroup={this.state.idGroup} imageGroup={this.state.imageGroup} />
-                                        <AddSerie />
+                                        <SeriesGroup idGroup={this.state.idGroup}/>
+                                        <AddSerie idGroup={this.state.idGroup}/>
                                     </div>
                                 }
                             </div>

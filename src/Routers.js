@@ -11,10 +11,10 @@ import NotFound from './NotFound';
 
 class Routers extends Component {
     componentDidMount() {
-        // var token = localStorage.getItem('token');
-        // if (token === null && window.location.pathname !== '/register' && window.location.pathname !== '/') {
-        //     window.location.href = 'http://localhost:3000'
-        // }
+        var token = localStorage.getItem('token');
+        if (token === null && window.location.pathname !== '/register' && window.location.pathname !== '/') {
+            window.location.href = 'http://localhost:3000'
+        }
     }
     render() {
         return (

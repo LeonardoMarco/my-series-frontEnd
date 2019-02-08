@@ -6,11 +6,13 @@ class EditGroup extends Component {
     state = {
         active: '',
         active2: '',
+        active3: '',
         file: 'http://sistema.cbdaweb.org.br/cbdaweb/_uploads/fotosAtleta/avatar_generico.jpg?c=1543979030',
         error: '',
         member: [],
         error_member: '',
-        value_input_member: ''
+        value_input_member: '',
+        memberGroup: []
     }
 
     constructor(props) {
@@ -18,6 +20,7 @@ class EditGroup extends Component {
         this.editGroup = this.editGroup.bind(this)
         this.editImage = this.editImage.bind(this)
         this.addMemberGroup = this.addMemberGroup.bind(this)
+        this.listMemberGroup = this.listMemberGroup.bind(this)
     }
 
     editImage(event) {
@@ -98,7 +101,7 @@ class EditGroup extends Component {
     }
 
     validMember(e) {
-        this.setState({value_input_member: e.target.value})
+        this.setState({ value_input_member: e.target.value })
         var a = this.refs.member.value
         if (a.lastIndexOf('@') > -1 && a.lastIndexOf('.') > 1) {
             const check = {
@@ -108,13 +111,13 @@ class EditGroup extends Component {
 
             Api.checkMember(check)
                 .then(res => {
-                    this.setState({ member: [res.data], error_member: ''})
+                    this.setState({ member: [res.data], error_member: '' })
                 }).catch(error => {
                     this.setState({ error_member: error.response.data.error })
 
                 })
         } else {
-            this.setState({ member: [],error_member: '' })
+            this.setState({ member: [], error_member: '' })
         }
 
 
@@ -124,14 +127,31 @@ class EditGroup extends Component {
         const member = {
             email: this.state.member[0].email,
             group: this.props.idGroup
-        }   
-        
+        }
+
 
         Api.addMember(member)
             .then(res => {
                 alert('Membro adicionado com sucesso')
-                this.setState({value_input_member: '', member: []})
+                this.setState({ value_input_member: '', member: [] })
             }).catch(error => {
+                console.log(error.response.data.error)
+            })
+    }
+
+    listMemberGroup() {
+        this.setState({ active3: 'show animated-s fadeInRightBig-s' })
+
+        const idGroup = {
+            id: this.props.idGroup
+        }
+
+        Api.listMember(idGroup)
+            .then(res => {
+                this.setState({ memberGroup: res.data })
+                console.log(res.data)
+            })
+            .catch(error => {
                 console.log(error.response.data.error)
             })
     }
@@ -144,8 +164,9 @@ class EditGroup extends Component {
 
                     </button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <button className="dropdown-item" onClick={() => this.setState({ active: 'show animated-s fadeInRightBig-s' })} data-toggle="modal" data-target="#exampleModal">Editar grupo</button>
-                        <button className="dropdown-item" data-toggle="modal" data-target="#exampleModal" onClick={() => this.setState({ active2: 'show animated-s fadeInRightBig-s' })}>Adicionar membros</button>
+                        <button className="dropdown-item" onClick={() => this.setState({ active: 'show animated-s fadeInRightBig-s' })}  >Editar grupo</button>
+                        <button className="dropdown-item" onClick={() => this.listMemberGroup()}>Ver membros</button>
+                        <button className="dropdown-item" onClick={() => this.setState({ active2: 'show animated-s fadeInRightBig-s' })}>Adicionar membros</button>
                     </div>
                 </div>
                 <div className={this.state.active + ' w-100 colum colum-2 bg-danger position-absolute edit-group'}>
@@ -197,7 +218,7 @@ class EditGroup extends Component {
                         </div>
                         <div className="col-md-12 p-0">
                             <div className="p-5">
-                                <input type="email" className="form-control" value={this.state.value_input_member} placeholder="digite o e-mail do usuário" onChange={(e) => this.validMember(e)} ref="member"  />
+                                <input type="email" className="form-control" value={this.state.value_input_member} placeholder="digite o e-mail do usuário" onChange={(e) => this.validMember(e)} ref="member" />
                                 <ul className="w-100 bg-dark ul-member p-0">
                                     {this.state.error_member === '' ?
                                         this.state.member.map((member, i) =>
@@ -215,7 +236,33 @@ class EditGroup extends Component {
                                         )
                                         : <li className="text-light ul-add-member p-3">
                                             {this.state.error_member}
-                                          </li>}
+                                        </li>}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className={this.state.active3 + ' w-100 colum colum-2 bg-danger position-absolute edit-group'}>
+                    <div className="row">
+                        <div className="col-md-12">
+                            <span className="float-right mr-3 close" onClick={() => this.setState({ active3: '' })}>x</span>
+                        </div>
+                        <div className="col-md-12 p-0">
+                            <div className="p-5">
+                                <ul className="w-100 bg-dark ul-member p-0">
+                                    {this.state.memberGroup.map((member, i) =>
+                                        <li key={i} className="text-light ul-add-member">
+                                            <div className="media p-2">
+                                                {member.image === '' ? <img src={process.env.REACT_APP_API_URL + 'public/uploads/imagesUser/null.jpg'} className="mt-3 img-circle" width="50" height="50" alt="img-User" /> : <img src={process.env.REACT_APP_API_URL + 'public/uploads/imagesUser/' + member.image} className="mt-3 img-circle" width="50" height="50" alt="img-User" />}
+                                                <div className="media-body mt-2 ml-3">
+                                                    <h5 className="mt-0">{member.name}</h5>
+                                                    {member.email}
+                                                </div>
+                                                <span className="p-3 text-light">{member.role_id}</span>
+                                            </div>
+                                        </li>
+                                    )}
                                 </ul>
                             </div>
                         </div>

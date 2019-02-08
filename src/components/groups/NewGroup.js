@@ -53,7 +53,7 @@ class NewGroup extends Component {
         return (
             <React.Fragment>
                 <button className="btn btn-danger btn-sm float-right"
-                    onClick={() => this.setState({ active: 'show animated-s fadeInLeftBig-s' })} data-toggle="modal" data-target="#exampleModal">Novo grupo</button>
+                    onClick={() => this.setState({ active: 'show animated-s fadeInLeftBig-s' })}  >Novo grupo</button>
                 <div className={this.state.active + ' w-100 colum bg-danger position-absolute'}>
                     <div className="row">
                         <div className="col-md-12">

@@ -34,7 +34,12 @@ const apis = {
     favoriteGroup: (favoriteGroup) => api.post('group/change_star', favoriteGroup),
     //series
     series: (idGroup) => api.post('group/all_series', idGroup),
-    // addSerie: (idGroup) => api.post('group/all_series', idGroup)
+    addSerie: (serie) => api.post('group/add_serie', serie),
+    Listserie: () => api.get('serie/all'),
+    //list member group
+    listMember: (idGroup) => api.post('group/users', idGroup),
+    listMember: (idGroup) => api.post('group/users', idGroup),
+    removeSerie: (removeSerie) => api.post('group/serie_remove', removeSerie),
     
 
 }
